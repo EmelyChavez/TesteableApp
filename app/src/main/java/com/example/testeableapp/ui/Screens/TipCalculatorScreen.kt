@@ -21,6 +21,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 
@@ -54,6 +55,7 @@ fun TipCalculatorScreen() {
                 keyboardType = KeyboardType.Number
             ),
             modifier = Modifier.fillMaxWidth()
+                .testTag("monto")
         )
 
         Text("Porcentaje de propina: $tipPercentage%")
@@ -63,6 +65,7 @@ fun TipCalculatorScreen() {
             valueRange = 0f..50f,
             steps = 49,
             modifier = Modifier.fillMaxWidth()
+                .testTag("porcentajePropina")
         )
 
         Text("Número de personas: $numberOfPeople")
@@ -71,11 +74,14 @@ fun TipCalculatorScreen() {
             horizontalArrangement = Arrangement.SpaceBetween,
             modifier = Modifier.fillMaxWidth()
         ) {
-            Button(onClick = { if (numberOfPeople > 1) numberOfPeople-- }) {
+            Button(onClick = { if (numberOfPeople > 1) numberOfPeople-- },
+                modifier = Modifier.testTag("decrementarPersona")) {
                 Text("-")
             }
-            Text(text = numberOfPeople.toString())
-            Button(onClick = { numberOfPeople++ }) {
+            Text(text = numberOfPeople.toString(),
+                modifier = Modifier.testTag("numeroPersona"))
+            Button(onClick = { numberOfPeople++ },
+                modifier = Modifier.testTag("incrementarPersona")) {
                 Text("+")
             }
         }
@@ -86,7 +92,8 @@ fun TipCalculatorScreen() {
         ) {
             Checkbox(
                 checked = roundUp,
-                onCheckedChange = { roundUp = it }
+                onCheckedChange = { roundUp = it },
+                modifier = Modifier.testTag("redondeo")
             )
             Text("Redondear propina", modifier = Modifier.padding(start = 8.dp))
         }
@@ -95,7 +102,8 @@ fun TipCalculatorScreen() {
 
         Text(
             text = "Propina: $${"%.2f".format(tip)}",
-            style = MaterialTheme.typography.headlineSmall
+            style = MaterialTheme.typography.headlineSmall,
+            modifier = Modifier.testTag("validarPropina")
         )
         Text(
             text = "Total por persona: $${"%.2f".format(totalPerPerson)}",
