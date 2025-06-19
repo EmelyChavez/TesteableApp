@@ -4,7 +4,7 @@ import org.junit.Assert.assertEquals
 import org.junit.Test
 import com.example.testeableapp.ui.Screens.calculateTip
 
-class TipCalculatorUnitTest {
+class TipCalculatorUnitTest3 {
 
     @Test
     fun calcular_propina_con_monto_negativo() {
