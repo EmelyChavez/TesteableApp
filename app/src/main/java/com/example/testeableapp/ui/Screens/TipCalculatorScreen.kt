@@ -107,7 +107,8 @@ fun TipCalculatorScreen() {
         )
         Text(
             text = "Total por persona: $${"%.2f".format(totalPerPerson)}",
-            style = MaterialTheme.typography.headlineSmall
+            style = MaterialTheme.typography.headlineSmall,
+            modifier = Modifier.testTag("totalPorPersona")
         )
     }
 }

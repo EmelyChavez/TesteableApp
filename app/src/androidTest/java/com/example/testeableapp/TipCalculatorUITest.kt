@@ -37,6 +37,30 @@ class TipCalculatorUITest{
             .assertExists()
             .assertTextContains("Propina: $", substring = true)
     }
+    @Test
+
+    fun cambiarSlider_verificarValor(){
+        composeTestRule.setContent {
+            TipCalculatorScreen()
+        }
+
+        composeTestRule.onNodeWithTag("monto").performTextInput("100")
+        composeTestRule.onNodeWithTag("incrementarPersona").performClick()
+        composeTestRule.onNodeWithTag("porcentajePropina").performSemanticsAction(SemanticsActions.SetProgress){
+            it(50f)
+        }
+
+        composeTestRule
+            .onNodeWithTag("validarPropina")
+            .assertExists()
+            .assertTextContains("Propina: \$50.00")
+
+        composeTestRule
+            .onNodeWithTag("totalPorPersona")
+            .assertExists()
+            .assertTextContains("Total por persona: \$75.00")
+
+    }
 
 
 
