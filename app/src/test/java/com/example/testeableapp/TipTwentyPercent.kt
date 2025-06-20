@@ -1,11 +1,10 @@
 package com.example.testeableapp
 
-import com.example.testeableapp.ui.Screens.TipCalculatorScreen
 import com.example.testeableapp.ui.Screens.calculateTip
 import org.junit.Assert.assertEquals
-import kotlin.test.Test
+import org.junit.Test
 
-class testTipTwentyPercent (){
+class TipTwentyPercent (){
 
     @Test
     fun testTipTwentyPercent (){

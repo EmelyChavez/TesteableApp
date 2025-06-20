@@ -104,4 +104,22 @@ class TipCalculatorUITest{
         composeTestRule.onNodeWithTag("numeroPersona").assertTextEquals("1")
     }
 
+    @Test
+    fun verificar_Totales_En_Cero_SinMonto(){
+        composeTestRule.setContent {
+            TipCalculatorScreen()
+        }
+
+        composeTestRule
+            .onNodeWithTag("validarPropina")
+            .assertExists()
+            .assertTextContains("Propina: \$0.00")
+
+        composeTestRule
+            .onNodeWithTag("totalPorPersona")
+            .assertExists()
+            .assertTextContains("Total por persona: \$0.00")
+
+    }
+
 }
