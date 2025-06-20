@@ -4,6 +4,7 @@ import com.example.testeableapp.ui.Screens.calculateTip
 import org.junit.Assert.assertEquals
 import org.junit.Test
 
+//Test UI Adicional Calcular Propina con monto adicional
 class TipWithDecimalAmountTest {
     @Test
     fun calcular_propina_con_monto_decimal() {
