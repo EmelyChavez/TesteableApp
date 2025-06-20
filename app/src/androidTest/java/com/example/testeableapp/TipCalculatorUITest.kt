@@ -31,11 +31,17 @@ class TipCalculatorUITest{
         composeTestRule.onNodeWithTag("incrementarPersona").performClick()
         composeTestRule.onNodeWithTag("incrementarPersona").performClick()
 
-        composeTestRule.onNodeWithTag("redondeo").performClick()
-
-        composeTestRule.onNodeWithTag("validarPropina")
+        val resultadoSinRedondeo = composeTestRule.onNodeWithTag("validarPropina")
             .assertExists()
             .assertTextContains("Propina: $", substring = true)
+
+        composeTestRule.onNodeWithTag("redondeo").performClick()
+
+        val resultadoConRedondeo = composeTestRule.onNodeWithTag("validarPropina")
+            .assertExists()
+            .assertTextContains("Propina: $", substring = true)
+
+        assert(resultadoSinRedondeo != resultadoConRedondeo)
     }
     @Test
 
