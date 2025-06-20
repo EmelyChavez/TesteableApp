@@ -9,6 +9,6 @@ class TipWithDecimalAmountTest {
     fun calcular_propina_con_monto_decimal() {
         val resultado = calculateTip(amount = 123.45, tipPercent = 20, roundUp = false)
         // 123.45 * 0.20 = 24.69
-        assertEquals(24.69, resultado, 0.01)
+        assertEquals(24.69, resultado, 0.00)
     }
 }
