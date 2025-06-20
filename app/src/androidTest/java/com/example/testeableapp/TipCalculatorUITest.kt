@@ -3,6 +3,7 @@ package com.example.testeableapp
 import androidx.compose.ui.semantics.SemanticsActions
 import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
+import androidx.compose.ui.test.assertTextEquals
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
@@ -79,6 +80,28 @@ class TipCalculatorUITest{
         composeTestRule.onNodeWithTag("porcentajePropina").assertExists().assertIsDisplayed()
         composeTestRule.onNodeWithTag("numeroPersona").assertExists().assertIsDisplayed()
 
+    }
+
+    @Test
+    fun incremento_contador_DePersonas_y_noBajaDe1(){
+        composeTestRule.setContent {
+            TipCalculatorScreen()
+        }
+
+        composeTestRule.onNodeWithTag("numeroPersona")
+            .assertExists().assertTextEquals("1")
+
+        repeat(3){
+            composeTestRule.onNodeWithTag("incrementarPersona").performClick()
+        }
+
+        composeTestRule.onNodeWithTag("numeroPersona").assertTextEquals("4")
+
+        repeat(5){ //no debe bajar de 1
+            composeTestRule.onNodeWithTag("decrementarPersona").performClick()
+        }
+
+        composeTestRule.onNodeWithTag("numeroPersona").assertTextEquals("1")
     }
 
 }
