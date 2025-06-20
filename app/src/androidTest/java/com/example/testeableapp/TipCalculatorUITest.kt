@@ -1,6 +1,7 @@
 package com.example.testeableapp
 
 import androidx.compose.ui.semantics.SemanticsActions
+import androidx.compose.ui.test.assertIsDisplayed
 import androidx.compose.ui.test.assertTextContains
 import androidx.compose.ui.test.junit4.createComposeRule
 import androidx.compose.ui.test.onNodeWithTag
@@ -68,6 +69,16 @@ class TipCalculatorUITest{
 
     }
 
+    @Test
+    fun validar_PrecenciaDeElementos(){
+        composeTestRule.setContent {
+            TipCalculatorScreen()
+        }
 
+        composeTestRule.onNodeWithTag("monto").assertExists().assertIsDisplayed()
+        composeTestRule.onNodeWithTag("porcentajePropina").assertExists().assertIsDisplayed()
+        composeTestRule.onNodeWithTag("numeroPersona").assertExists().assertIsDisplayed()
+
+    }
 
 }
